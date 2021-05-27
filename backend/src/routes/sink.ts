@@ -1,6 +1,6 @@
 import StatusCodes from 'http-status-codes';
 import { Request, Response } from 'express';
-import { addActivity, LogEntityPayload } from 'src/repositories/timeEntry';
+import { addActivity } from 'src/repositories/timeEntry';
 
 const { OK } = StatusCodes;
 
