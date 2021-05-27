@@ -2,6 +2,10 @@
       <span>expressTimelog</span>
 </mat-toolbar>
 
+<button mat-raised-button color="primary" (click)="previousDay()">back</button>
+{{ this.day  | date:'yyyy-MM-dd'}}
+<button mat-raised-button color="primary" (click)="nextDay()">next</button>
+
 <div class="container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="timestamp">

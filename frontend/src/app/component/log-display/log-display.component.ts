@@ -14,6 +14,7 @@ export class LogDisplayComponent implements OnInit {
   displayedColumns: string[] = ['timestamp', 'activity'];
   dataSource = new MatTableDataSource<LogEntity>();
   logsDiff: LogEntity[] = [];
+  day: Date = new Date(Date.now());
 
   constructor(
     private backend: BackendService,
@@ -53,6 +54,13 @@ export class LogDisplayComponent implements OnInit {
         this.changeDetctorRefs.detectChanges();
       }
     )
+  }
+
+  nextDay(): void {
+    this.day = new Date(this.day.setDate(this.day.getDate() + 1));
+  }
+  previousDay(): void {
+    this.day = new Date(this.day.setDate(this.day.getDate() - 1));
   }
 
 }

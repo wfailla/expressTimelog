@@ -6,6 +6,7 @@ const { OK } = StatusCodes;
 
 export async function getLog(req: Request, res: Response) {
     console.log("getting it all");
-    const response = await getAll();
+    var day: any = req.query.day;
+    const response = await getAll(day);
     return res.status(OK).send(response);
 }

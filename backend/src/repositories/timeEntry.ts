@@ -6,12 +6,9 @@ export interface LogEntityPayload {
     activity: string;
 }
 
-export const getAll = async (): Promise<Array<LogEntity>> => {
+export const getAll = async (day: string): Promise<Array<LogEntity>> => {
     const logEntityRepository = getRepository(LogEntity);
-    logEntityRepository.find().then( (o) => {
-        console.log(o);
-    })
-    return logEntityRepository.find();
+    return (await logEntityRepository.find()).filter( o => o.timestamp.includes(day));
 }
 
 export const addActivity = async (payload: LogEntityPayload): Promise<LogEntity> => {
