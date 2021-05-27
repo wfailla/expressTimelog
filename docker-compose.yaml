@@ -5,3 +5,14 @@ services:
         image: etl-backend
         ports:
             - 3000:3000
+        build:
+            context: ./backend
+            dockerfile: ./Dockerfile
+        depends_on:
+            - db
+    db:
+        image: postgres:13
+        environment:
+            - POSTGRES_DB=express-ts
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
