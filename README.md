@@ -19,3 +19,9 @@ $ npm test
 $ cd backend
 $ docker build -t etl-backend .
 ```
+
+## RUN
+
+```
+$ docker compose up
+```
