@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+    backend:
+        image: etl-backend
+        ports:
+            - 3000:3000
