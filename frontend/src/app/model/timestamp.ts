@@ -8,7 +8,6 @@ export class Timestamp {
     }
 
     public diff(otherTimestamp: Timestamp): string {
-        var result: string;
         var houres: number = otherTimestamp._date.getHours() - this._date.getHours();
         var minutes: number = otherTimestamp._date.getMinutes() - this._date.getMinutes();
         console.log(this._date.getHours())
@@ -20,5 +19,9 @@ export class Timestamp {
     }
     public set date(value: Date) {
         this._date = value;
+    }
+
+    public toString(): string {
+        return new DatePipe("en-US").transform(this._date, 'yyyy-MM-dd HH:mm') || '';
     }
 }

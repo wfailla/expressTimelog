@@ -27,7 +27,7 @@ export class LogInputComponent implements OnInit {
     };
     console.log(this.activityFormControl);
     var date = new Date();
-    var timestamp = this.datepipe.transform(date, 'yyyy-MM-dd');
+    var timestamp = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
     logEntry.timestamp = timestamp || '';
 
     if (this.activityFormControl?.value !== undefined && this.activityFormControl?.value !== "") {

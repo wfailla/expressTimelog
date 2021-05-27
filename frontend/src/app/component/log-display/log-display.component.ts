@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { LogEntity } from 'src/app/model/log-entity';
+import { LogEntity, LogEntityRow } from 'src/app/model/log-entity';
+import { Timestamp } from 'src/app/model/timestamp';
 import { BackendService } from 'src/app/service/backend.service';
 
 @Component({
@@ -10,7 +12,9 @@ import { BackendService } from 'src/app/service/backend.service';
 })
 export class LogDisplayComponent implements OnInit {
   displayedColumns: string[] = ['timestamp', 'activity'];
-  logs: LogEntity[] = [];
+  dataSource = new MatTableDataSource<LogEntity>();
+  logs: LogEntityRow[] = [];
+  logsDiff: LogEntity[] = [];
 
   constructor(
     private backend: BackendService,
@@ -22,14 +26,36 @@ export class LogDisplayComponent implements OnInit {
   }
 
   sync(): void {
+    this.logs = [];
+    this.logsDiff = [];
+    var lastTimestamp: Timestamp;
     this.backend.getLogEntries().subscribe(
       s => {
-        this.logs = s;
+        s.forEach( o => {
+          this.logs.push({
+            timestamp: new Timestamp(new Date(o.timestamp)),
+            activity: o.activity
+          });
+          if ( lastTimestamp === undefined ) {
+            this.logsDiff.push({
+              timestamp: "0 h 0 min",
+              activity: o.activity
+            });
+          } else {
+            var currentTimestamp = new Timestamp(new Date(o.timestamp));
+            this.logsDiff.push({
+              timestamp: lastTimestamp.diff(currentTimestamp),
+              activity: o.activity
+            });
+          }
+          lastTimestamp = new Timestamp(new Date(o.timestamp))
+        })
       },
       e => {
         console.log(e);
       },
       () => {
+        this.dataSource.data = this.logsDiff;
         this.changeDetctorRefs.detectChanges();
       }
     )

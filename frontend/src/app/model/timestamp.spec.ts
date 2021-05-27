@@ -8,9 +8,9 @@ describe('Timestamp', () => {
 
   fit('calculate time difference in hours and min', () => {
     // Arrange
-    var date = new Date("2019-11-10 10:00:00");
+    var date = new Date("2019-11-10 10:00");
     var timestamp = new Timestamp(date);
-    var date2 = new Date("2019-11-10 11:10:00");
+    var date2 = new Date("2019-11-10 11:10");
     var timestamp2 = new Timestamp(date2);
 
     // Act
