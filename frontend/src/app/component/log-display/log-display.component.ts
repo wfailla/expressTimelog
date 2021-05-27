@@ -13,7 +13,6 @@ import { BackendService } from 'src/app/service/backend.service';
 export class LogDisplayComponent implements OnInit {
   displayedColumns: string[] = ['timestamp', 'activity'];
   dataSource = new MatTableDataSource<LogEntity>();
-  logs: LogEntityRow[] = [];
   logsDiff: LogEntity[] = [];
 
   constructor(
@@ -26,16 +25,11 @@ export class LogDisplayComponent implements OnInit {
   }
 
   sync(): void {
-    this.logs = [];
     this.logsDiff = [];
     var lastTimestamp: Timestamp;
     this.backend.getLogEntries().subscribe(
       s => {
         s.forEach( o => {
-          this.logs.push({
-            timestamp: new Timestamp(new Date(o.timestamp)),
-            activity: o.activity
-          });
           if ( lastTimestamp === undefined ) {
             this.logsDiff.push({
               timestamp: "0 h 0 min",
