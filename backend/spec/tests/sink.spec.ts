@@ -26,20 +26,20 @@ describe('log time', () => {
             // Arrange
             
             // Act
-            const req = await (request(Server).post(path))
+            const req = await (request(Server).post(path));
             // Assert
             // Call API
-            expect(req.status).toEqual(OK)
+            expect(req.status).toEqual(OK);
         });
 
-        it(`get should return NOT_FOUND`, async () => {
+        it(`get should return OK`, async () => {
             // Arrange
             
             // Act
-            const req = await (request(Server).get(path))
+            const req = await (request(Server).get(path));
             // Assert
             // Call API
-            expect(req.status).toEqual(NOT_FOUND)
+            expect(req.status).toEqual(OK);
         });
 
     });
