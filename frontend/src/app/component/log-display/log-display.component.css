@@ -1,0 +1,10 @@
+.container {
+    height: 400px;
+    width: 70%;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+table {
+    width: 100%;
+  }
