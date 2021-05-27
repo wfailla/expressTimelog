@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { BackendService } from 'src/app/service/backend.service';
 
 @Component({
@@ -14,6 +15,14 @@ export class LogDisplayComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.backend.getLogEntries().subscribe(
+      s => {
+        this.logs = s.toString();
+      },
+      e => {
+        console.log(e);
+      }
+    )
   }
 
 }
