@@ -12,3 +12,7 @@ example payload:
     'activity': 'coding'
 }
 ```
+
+## GET /log
+
+Endpoint to get all logs of a day. Query parameter day (`YYYY-MM-DD`).
