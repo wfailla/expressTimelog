@@ -30,7 +30,7 @@ export class LogDisplayComponent implements OnInit {
   sync(): void {
     this.logsDiff = [];
     var lastTimestamp: Timestamp;
-    this.backend.getLogEntries(this.datepipe.transform(this.day, 'yyyy-MM-dd HH:mm') || '').subscribe(
+    this.backend.getLogEntries(this.datepipe.transform(this.day, 'yyyy-MM-dd') || '').subscribe(
       s => {
         s.forEach( o => {
           if ( lastTimestamp === undefined ) {
