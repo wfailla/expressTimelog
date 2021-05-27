@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "test": "mocha",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -15,8 +16,5 @@
   },
   "devDependencies": {
     "mocha": "^8.4.0"
-  },
-  "scripts": {
-    "test": "mocha"
   }
 }
