@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
@@ -18,7 +19,8 @@ export class LogDisplayComponent implements OnInit {
 
   constructor(
     private backend: BackendService,
-    private changeDetctorRefs: ChangeDetectorRef
+    private changeDetctorRefs: ChangeDetectorRef,
+    private datepipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +30,7 @@ export class LogDisplayComponent implements OnInit {
   sync(): void {
     this.logsDiff = [];
     var lastTimestamp: Timestamp;
-    this.backend.getLogEntries().subscribe(
+    this.backend.getLogEntries(this.datepipe.transform(this.day, 'yyyy-MM-dd HH:mm') || '').subscribe(
       s => {
         s.forEach( o => {
           if ( lastTimestamp === undefined ) {

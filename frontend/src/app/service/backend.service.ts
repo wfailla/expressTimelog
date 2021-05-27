@@ -13,8 +13,8 @@ export class BackendService {
     private http: HttpClient
   ) { }
 
-  public getLogEntries() {
-    return this.http.get<LogEntity[]>("http://localhost:3000/api/log");
+  public getLogEntries(day: string) {
+    return this.http.get<LogEntity[]>("http://localhost:3000/api/log?day="+day);
   }
 
   public addLogEntries(logEntity: LogEntity) {
