@@ -11,6 +11,7 @@ import { LogInputComponent } from './component/log-input/log-input.component';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import {MatButtonModule} from '@angular/material/button';
     ReactiveFormsModule,
     MatButtonModule,
   ],
-  providers: [],
+  providers: [
+    DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { LogEntity } from 'src/app/model/log-entity';
 import { BackendService } from 'src/app/service/backend.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-log-input',
@@ -13,6 +14,7 @@ export class LogInputComponent implements OnInit {
 
   constructor(
     private backend: BackendService,
+    private datepipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
@@ -23,13 +25,20 @@ export class LogInputComponent implements OnInit {
       timestamp: "asdf",
       activity: "asdf"
     };
-    if ( this.activityFormControl.get('timestamp')?.value !== undefined ) {
-      logEntry.timestamp = this.activityFormControl.get('timestamp')?.value;
+    console.log(this.activityFormControl);
+    var date = new Date();
+    var timestamp = this.datepipe.transform(date, 'yyyy-MM-dd');
+    logEntry.timestamp = timestamp || '';
+
+    if (this.activityFormControl?.value !== undefined && this.activityFormControl?.value !== "") {
+      logEntry.activity = this.activityFormControl.value;
     }
-    if ( this.activityFormControl.get('activity')?.value !== undefined ) {
-      logEntry.timestamp = this.activityFormControl.get('activity')?.value;
-    }
-    this.backend.addLogEntries(logEntry);
+    this.backend.addLogEntries(logEntry).subscribe(
+      s => {
+        console.log('added');
+        console.log(logEntry);
+      }
+    )
   }
 
 }

@@ -18,6 +18,10 @@ export class LogDisplayComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.sync();
+  }
+
+  sync(): void {
     this.backend.getLogEntries().subscribe(
       s => {
         this.logs = s;
