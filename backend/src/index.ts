@@ -1,6 +1,7 @@
 import './pre-start'; // Must be the first import
 import app from '@server';
 import logger from '@shared/Logger';
+import "reflect-metadata";
 import { createConnection } from 'typeorm';
 import dbConfig from './config/db';
 
@@ -16,10 +17,10 @@ const port = Number(process.env.PORT || 3000);
 createConnection(dbConfig)
   .then((_connection) => {
     app.listen(port, () => {
-      console.log("Server is running on port", port);
+        logger.info("Server is running on port" +port);
     });
   })
   .catch((err) => {
-    console.log("Unable to connect to db", err);
+    logger.info("Unable to connect to db", err);
     process.exit(1);
   });
