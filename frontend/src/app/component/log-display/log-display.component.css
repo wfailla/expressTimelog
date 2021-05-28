@@ -1,6 +1,6 @@
 .container {
     margin: auto;
-    width: 70%;
+    width: 100%;
     max-width: 100%;
     overflow: auto;
   }
@@ -8,7 +8,7 @@
 .tableContainer {
     margin: auto;
     height: 500px;
-    width: 70%;
+    width: 100%;
     max-width: 100%;
     overflow: auto;
   }

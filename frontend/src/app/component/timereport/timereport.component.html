@@ -1,8 +1,7 @@
 <div class="container">
-    <div>
-        Grouped times:
-    </div>
-    <div *ngFor="let key of timeSpend.keys()">
-        {{key}} - {{ timeSpend.get(key)}}
-    </div>
+    <mat-list role="list">
+        <mat-list-item *ngFor="let key of timeSpend.keys()" role="listitem">
+            {{key}} - {{ timeSpend.get(key)}}
+        </mat-list-item>
+      </mat-list>
 </div>

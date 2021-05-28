@@ -17,6 +17,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { WorkDoneDisplayComponent } from './component/work-done-display/work-done-display.component';
 import { SlackingTimeDisplayComponent } from './component/slacking-time-display/slacking-time-display.component';
 import { TimereportComponent } from './component/timereport/timereport.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { TimereportComponent } from './component/timereport/timereport.component
     MatButtonModule,
     MatToolbarModule,
     MatGridListModule,
+    MatTabsModule,
+    MatCardModule,
+    MatListModule,
   ],
   providers: [
     DatePipe,

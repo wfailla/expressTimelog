@@ -3,9 +3,35 @@
 </mat-toolbar>
 
 <div class="mainWindow">
-    <app-log-display></app-log-display>
-    <app-work-done-display></app-work-done-display>
-    <app-slacking-time-display></app-slacking-time-display>
-    <app-log-input></app-log-input>
-    <app-timereport></app-timereport>
+    <mat-tab-group animationDuration="200ms">
+        <mat-tab label="Log">
+            <mat-card class="example-card">
+                <mat-card-header>
+                </mat-card-header>
+                <mat-card-content>
+                    <app-log-display></app-log-display>
+                    <app-work-done-display></app-work-done-display>
+                    <app-slacking-time-display></app-slacking-time-display>
+                </mat-card-content>
+                <mat-card-actions>
+                    <app-log-input></app-log-input>
+                </mat-card-actions>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="Report">
+            <mat-card class="example-card">
+                <mat-card-header class="container">
+                    <mat-card-title>Timereport</mat-card-title>
+                    <mat-card-subtitle>grouped</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <app-timereport></app-timereport>
+                    <app-work-done-display></app-work-done-display>
+                    <app-slacking-time-display></app-slacking-time-display>        
+                </mat-card-content>
+                <mat-card-actions>
+                </mat-card-actions>
+            </mat-card>
+        </mat-tab>
+    </mat-tab-group>
 </div>
