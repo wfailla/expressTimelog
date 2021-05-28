@@ -44,7 +44,6 @@ export class Timestamp {
             houres -= 1;
             minutes = minutes + 60;
         }
-        console.log(this._date.getHours())
         return new TimeString(houres, minutes);
     }
 
@@ -72,6 +71,34 @@ export class Timestamp {
             firstTimestamp = currentTimestamp;
         })
         return timeString.toString();
+    }
+
+    public static calcTimeByGroup(list: LogEntity[], group: string): Map<string, TimeString> {
+        var timeString = new TimeString(0,0);
+        var groups = new Map<string, TimeString>();
+        var lastTimestamp: Timestamp = new Timestamp(new Date(list[0].timestamp));
+
+
+        list.forEach( s => {
+            var group: string = 'other';
+            var currentTimestamp = new Timestamp(new Date(s.timestamp));
+            
+            if (s.activity.includes(':')) {
+                group = s.activity.split(':')[0];
+            }
+            if (groups.get(group) === undefined) {
+                groups.set(
+                    group,
+                    lastTimestamp.diffTimeString(currentTimestamp)
+                );
+            }
+            groups.get(group)?.addTime(
+                lastTimestamp.diffTimeString(currentTimestamp));
+
+            lastTimestamp = currentTimestamp;
+        })
+
+        return groups;
     }
 
     public get date(): Date {

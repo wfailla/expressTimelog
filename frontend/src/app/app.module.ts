@@ -16,6 +16,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { WorkDoneDisplayComponent } from './component/work-done-display/work-done-display.component';
 import { SlackingTimeDisplayComponent } from './component/slacking-time-display/slacking-time-display.component';
+import { TimereportComponent } from './component/timereport/timereport.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SlackingTimeDisplayComponent } from './component/slacking-time-display/
     LogDisplayComponent,
     LogInputComponent,
     WorkDoneDisplayComponent,
-    SlackingTimeDisplayComponent
+    SlackingTimeDisplayComponent,
+    TimereportComponent
   ],
   imports: [
     BrowserModule,
