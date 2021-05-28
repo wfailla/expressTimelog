@@ -16,3 +16,11 @@ example payload:
 ## GET /log
 
 Endpoint to get all logs of a day. Query parameter day (`YYYY-MM-DD`).
+
+# TODO:
+
+- implement tasks
+- fix diff calculateion
+- add pauses
+- implement total work done
+- implement total slacking time

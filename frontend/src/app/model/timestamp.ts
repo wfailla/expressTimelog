@@ -11,7 +11,7 @@ export class Timestamp {
         var houres: number = otherTimestamp._date.getHours() - this._date.getHours();
         var minutes: number = otherTimestamp._date.getMinutes() - this._date.getMinutes();
         console.log(this._date.getHours())
-        return houres.toString() + " h " + minutes + " min";
+        return houres.toString() + " h " + minutes.toString() + " min";
     }
 
     public get date(): Date {
