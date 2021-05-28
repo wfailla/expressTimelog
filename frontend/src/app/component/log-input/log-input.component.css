@@ -4,15 +4,23 @@
 }
 
 .form {
-    width: 88%;
+    width: 78%;
     padding: 1%;
   }
 
 .button {
+  margin: auto;
+  width: 8%;
+  padding: 1%;
+}
+
+.currentActivity {
+  margin: auto;
   width: 8%;
   padding: 1%;
 }
 
 mat-form-field {
-  width: 88%
+  margin: auto;
+  width: 78%
 }
