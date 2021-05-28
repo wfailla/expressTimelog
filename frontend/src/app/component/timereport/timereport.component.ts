@@ -23,6 +23,15 @@ export class TimereportComponent implements OnInit {
           this.timeSpend = Timestamp.calcTimeByGroup(s, 'meeting');
         }
       )
+    this.backend.changeOperation.subscribe(
+      s => {
+        this.backend.getLogEntries(this.datepipe.transform(new Date(), 'yyyy-MM-dd') || '').subscribe(
+          o => {
+            this.timeSpend = Timestamp.calcTimeByGroup(o, 'meeting');
+          }
+        )
+      }
+    )
   }
 
 }
