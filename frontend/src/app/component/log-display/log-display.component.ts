@@ -12,9 +12,9 @@ import { BackendService } from 'src/app/service/backend.service';
   styleUrls: ['./log-display.component.css']
 })
 export class LogDisplayComponent implements OnInit {
-  displayedColumns: string[] = ['timestamp', 'activity'];
-  dataSource = new MatTableDataSource<LogEntity>();
-  logsDiff: LogEntity[] = [];
+  displayedColumns: string[] = ['abstime', 'timestamp', 'activity'];
+  dataSource = new MatTableDataSource<LogEntityRow>();
+  logsDiff: LogEntityRow[] = [];
   day: Date = new Date(Date.now());
 
   constructor(
@@ -40,12 +40,14 @@ export class LogDisplayComponent implements OnInit {
         s.forEach( o => {
           if ( lastTimestamp === undefined ) {
             this.logsDiff.push({
+              abstime: o.timestamp,
               timestamp: "0 h 0 min",
               activity: o.activity
             });
           } else {
             var currentTimestamp = new Timestamp(new Date(o.timestamp));
             this.logsDiff.push({
+              abstime: o.timestamp,
               timestamp: lastTimestamp.diff(currentTimestamp),
               activity: o.activity
             });

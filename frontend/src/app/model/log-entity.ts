@@ -7,6 +7,7 @@ export interface LogEntity {
 }
 
 export interface LogEntityRow {
-    timestamp: Timestamp;
+    abstime: string;
+    timestamp: string;
     activity: string;
 }
