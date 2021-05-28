@@ -1,7 +1,18 @@
+.container {
+  margin: auto;
+  width: 70%;
+}
+
 .form {
-    width: 70%;
+    width: 88%;
+    padding: 1%;
   }
 
-.example-full-width {
-    width: 100%;
-  }
+.button {
+  width: 8%;
+  padding: 1%;
+}
+
+mat-form-field {
+  width: 88%
+}

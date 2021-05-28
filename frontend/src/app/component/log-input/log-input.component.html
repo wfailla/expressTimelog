@@ -1,8 +1,13 @@
-<form class="form">
-    <mat-form-field class="example-full-width">
-        <mat-label>log Time</mat-label>
-        <input type="text" matInput [formControl]="activityFormControl" placeholder="sushi">
-    </mat-form-field>
+<form>
+    <div class="container">
+        <span class="form">
+            <mat-form-field>
+                <mat-label>log Time</mat-label>
+                <input type="text" matInput [formControl]="activityFormControl" placeholder="sushi">
+            </mat-form-field>
+        </span>
+        <span class="button">
+            <button mat-raised-button color="primary" (click)="addActivity()">Add</button>
+        </span>
+    </div>
 </form>
-
-<button mat-raised-button color="primary" (click)="addActivity()">Add</button>

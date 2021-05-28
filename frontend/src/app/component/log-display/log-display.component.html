@@ -1,10 +1,20 @@
 <mat-toolbar color="primary">
-      <span>expressTimelog</span>
+    <span>expressTimelog</span>
 </mat-toolbar>
 
-<button mat-raised-button color="primary" (click)="previousDay()">back</button>
-{{ this.day  | date:'yyyy-MM-dd'}}
-<button mat-raised-button color="primary" (click)="nextDay()">next</button>
+<div class="container">
+
+    <span class="dateDisplayButton">
+        <button mat-raised-button color="primary" (click)="previousDay()">back</button>
+    </span>
+    <span class="dateDisplay">{{ this.day | date:'yyyy-MM-dd'}}</span>
+    <span class="dateDisplayButton">
+        <button mat-raised-button color="primary" (click)="nextDay()">next</button>
+    </span>
+    <span class="dateDisplayButton">
+        <button mat-raised-button color="primary" (click)="sync()">Get</button>
+    </span>
+</div>
 
 <div class="container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -21,5 +31,3 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>
-
-<button mat-raised-button color="primary" (click)="sync()">Get</button>
