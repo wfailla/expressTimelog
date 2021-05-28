@@ -30,3 +30,7 @@ table {
   display: inline-block;
   padding: 1%;
 }
+
+.make-gold {
+  background-color: lightgray
+}
