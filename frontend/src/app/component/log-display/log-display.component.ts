@@ -25,6 +25,11 @@ export class LogDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.sync();
+    this.backend.changeOperation.subscribe(
+      s => {
+        this.sync()
+      }
+    )
   }
 
   sync(): void {
@@ -60,9 +65,11 @@ export class LogDisplayComponent implements OnInit {
 
   nextDay(): void {
     this.day = new Date(this.day.setDate(this.day.getDate() + 1));
+    this.sync();
   }
   previousDay(): void {
     this.day = new Date(this.day.setDate(this.day.getDate() - 1));
+    this.sync();
   }
 
 }

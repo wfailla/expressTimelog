@@ -7,12 +7,9 @@
     <span class="dateDisplayButton">
         <button mat-raised-button color="primary" (click)="nextDay()">next</button>
     </span>
-    <span class="dateDisplayButton">
-        <button mat-raised-button color="primary" (click)="sync()">Get</button>
-    </span>
 </div>
 
-<div class="container">
+<div class="tableContainer">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="timestamp">
             <th mat-header-cell *matHeaderCellDef>TimeStamp</th>

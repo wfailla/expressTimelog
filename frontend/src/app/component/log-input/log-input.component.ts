@@ -25,7 +25,7 @@ export class LogInputComponent implements OnInit {
       timestamp: "asdf",
       activity: "asdf"
     };
-    console.log(this.activityFormControl);
+
     var date = new Date();
     var timestamp = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
     logEntry.timestamp = timestamp || '';
@@ -33,10 +33,10 @@ export class LogInputComponent implements OnInit {
     if (this.activityFormControl?.value !== undefined && this.activityFormControl?.value !== "") {
       logEntry.activity = this.activityFormControl.value;
     }
+
     this.backend.addLogEntries(logEntry).subscribe(
       s => {
-        console.log('added');
-        console.log(logEntry);
+        this.backend.changeDone();
       }
     )
   }
