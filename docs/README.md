@@ -20,4 +20,4 @@ Endpoint to get all logs of a day. Query parameter day (`YYYY-MM-DD`).
 # TODO:
 
 - implement tasks
-- implement total slacking time
+- implement categories
