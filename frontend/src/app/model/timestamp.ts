@@ -1,4 +1,30 @@
 import { DatePipe } from "@angular/common";
+import { LogEntity } from "./log-entity";
+
+export class TimeString {
+    houres: number;
+    minutes: number;
+
+    constructor(houres: number,
+        minutes: number) {
+            this.houres = houres;
+            this.minutes = minutes;
+        }
+    
+    public addTime(otherTime: TimeString): void {
+        if (this.minutes + otherTime.minutes > 60) {
+            this.minutes += otherTime.minutes - 60;
+            this.houres += 1;
+        } else {
+            this.minutes += otherTime.minutes;
+        }
+        this.houres += otherTime.houres;
+    }
+
+    public toString(): string {
+        return this.houres.toString() + " h " + this.minutes.toString() + " min";
+    }
+}
 
 export class Timestamp {
     private _date!: Date;
@@ -8,6 +34,10 @@ export class Timestamp {
     }
 
     public diff(otherTimestamp: Timestamp): string {
+        return this.diffTimeString(otherTimestamp).toString();
+    }
+
+    public diffTimeString(otherTimestamp: Timestamp): TimeString {
         var houres: number = otherTimestamp._date.getHours() - this._date.getHours();
         var minutes: number = otherTimestamp._date.getMinutes() - this._date.getMinutes();
         if (houres > 0 && minutes < 0) {
@@ -15,7 +45,33 @@ export class Timestamp {
             minutes = minutes + 60;
         }
         console.log(this._date.getHours())
-        return houres.toString() + " h " + minutes.toString() + " min";
+        return new TimeString(houres, minutes);
+    }
+
+    public static calcWorkTime(list: LogEntity[]): string {
+        var timeString = new TimeString(0,0);
+        var firstTimestamp: Timestamp = new Timestamp(new Date(list[0].timestamp));
+        list.forEach(s => {
+            var currentTimestamp = new Timestamp(new Date(s.timestamp));
+            if(!s.activity.includes("**")) {
+                timeString.addTime(firstTimestamp.diffTimeString(currentTimestamp))
+            }
+            firstTimestamp = currentTimestamp;
+        })
+        return timeString.toString();
+    }
+
+    public static calculateSlackingTime(list: LogEntity[]): string {
+        var timeString = new TimeString(0,0);
+        var firstTimestamp: Timestamp = new Timestamp(new Date(list[0].timestamp));
+        list.forEach(s => {
+            var currentTimestamp = new Timestamp(new Date(s.timestamp));
+            if(s.activity.includes("**")) {
+                timeString.addTime(firstTimestamp.diffTimeString(currentTimestamp))
+            }
+            firstTimestamp = currentTimestamp;
+        })
+        return timeString.toString();
     }
 
     public get date(): Date {

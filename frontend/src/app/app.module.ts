@@ -14,12 +14,16 @@ import {MatButtonModule} from '@angular/material/button';
 import { DatePipe } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { WorkDoneDisplayComponent } from './component/work-done-display/work-done-display.component';
+import { SlackingTimeDisplayComponent } from './component/slacking-time-display/slacking-time-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogDisplayComponent,
-    LogInputComponent
+    LogInputComponent,
+    WorkDoneDisplayComponent,
+    SlackingTimeDisplayComponent
   ],
   imports: [
     BrowserModule,
