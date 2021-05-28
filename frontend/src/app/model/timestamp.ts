@@ -10,6 +10,10 @@ export class Timestamp {
     public diff(otherTimestamp: Timestamp): string {
         var houres: number = otherTimestamp._date.getHours() - this._date.getHours();
         var minutes: number = otherTimestamp._date.getMinutes() - this._date.getMinutes();
+        if (houres > 0 && minutes < 0) {
+            houres -= 1;
+            minutes = minutes + 60;
+        }
         console.log(this._date.getHours())
         return houres.toString() + " h " + minutes.toString() + " min";
     }

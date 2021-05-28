@@ -19,4 +19,43 @@ describe('Timestamp', () => {
     // Assert
     expect(restult).toBe("1 h 10 min");
   })
+
+  fit('calculate time diff over the houre', () => {
+    // Arrange
+    var date = new Date("2019-11-10 07:58");
+    var timestamp = new Timestamp(date);
+    var date2 = new Date("2019-11-10 08:04");
+    var timestamp2 = new Timestamp(date2);
+
+    // Act
+    let result: string = timestamp.diff(timestamp2);
+    // Assert
+    expect(result).toBe("0 h 6 min");
+  })
+
+  fit('calculate time diff over the houre', () => {
+    // Arrange
+    var date = new Date("2019-11-10 07:08");
+    var timestamp = new Timestamp(date);
+    var date2 = new Date("2019-11-10 08:04");
+    var timestamp2 = new Timestamp(date2);
+
+    // Act
+    let result: string = timestamp.diff(timestamp2);
+    // Assert
+    expect(result).toBe("0 h 56 min");
+  })
+
+  fit('calculate time diff over the houre', () => {
+    // Arrange
+    var date = new Date("2019-11-10 05:58");
+    var timestamp = new Timestamp(date);
+    var date2 = new Date("2019-11-10 08:04");
+    var timestamp2 = new Timestamp(date2);
+
+    // Act
+    let result: string = timestamp.diff(timestamp2);
+    // Assert
+    expect(result).toBe("2 h 6 min");
+  })
 });
