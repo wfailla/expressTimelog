@@ -15,3 +15,16 @@
   display: inline-block;
   padding: 1%;
 }
+
+.tableContainer {
+    margin: auto;
+    height: 500px;
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+
+table {
+  width: 100%;
+}

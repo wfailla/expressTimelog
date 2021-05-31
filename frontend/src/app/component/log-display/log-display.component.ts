@@ -24,7 +24,6 @@ export class LogDisplayComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sync();
     this.backend.changeOperation.subscribe(
       s => {
         this.sync()
