@@ -73,8 +73,7 @@ export class Timestamp {
         return timeString.toString();
     }
 
-    public static calcTimeByGroup(list: LogEntity[], group: string): Map<string, TimeString> {
-        var timeString = new TimeString(0, 0);
+    public static calcTimeByGroup(list: LogEntity[]): Map<string, TimeString> {
         var groups = new Map<string, TimeString>();
         var lastTimestamp: Timestamp = new Timestamp(new Date(list[0].timestamp));
 

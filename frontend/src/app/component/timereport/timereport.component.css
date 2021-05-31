@@ -2,3 +2,16 @@
     margin: auto;
     width: 100%;
   }
+
+.dateDisplay {
+  margin: auto;
+  width: 78%;
+  display: inline-block;
+  padding: 1%;
+}
+
+.dateDisplayButton {
+  width: 8%;
+  display: inline-block;
+  padding: 1%;
+}

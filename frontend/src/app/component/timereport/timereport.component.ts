@@ -9,7 +9,8 @@ import { BackendService } from 'src/app/service/backend.service';
   styleUrls: ['./timereport.component.css']
 })
 export class TimereportComponent implements OnInit {
-  timeSpend= new Map<string, TimeString>();
+  timeSpend = new Map<string, TimeString>();
+  day: Date = new Date(Date.now());
 
   constructor(
     private backend: BackendService,
@@ -17,21 +18,32 @@ export class TimereportComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.backend.getLogEntries(this.datepipe.transform(new Date(), 'yyyy-MM-dd') || '')
-      .subscribe(
-        s => {
-          this.timeSpend = Timestamp.calcTimeByGroup(s, 'meeting');
-        }
-      )
+    this.sync();
     this.backend.changeOperation.subscribe(
       s => {
-        this.backend.getLogEntries(this.datepipe.transform(new Date(), 'yyyy-MM-dd') || '').subscribe(
-          o => {
-            this.timeSpend = Timestamp.calcTimeByGroup(o, 'meeting');
-          }
-        )
+        this.sync();
       }
     )
   }
+
+  sync(): void {
+    this.timeSpend = new Map<string, TimeString>();
+    this.backend.getLogEntries(this.datepipe.transform(this.day, 'yyyy-MM-dd') || '')
+      .subscribe(
+        s => {
+          this.timeSpend = Timestamp.calcTimeByGroup(s);
+        }
+      )
+  }
+
+  nextDay(): void {
+    this.day = new Date(this.day.setDate(this.day.getDate() + 1));
+    this.sync();
+  }
+  previousDay(): void {
+    this.day = new Date(this.day.setDate(this.day.getDate() - 1));
+    this.sync();
+  }
+
 
 }
