@@ -20,8 +20,8 @@ Endpoint to get all logs of a day. Query parameter day (`YYYY-MM-DD`).
 # TODO:
 
 - implement tasks
+- implement today button
 - implement as electron app
-- implement day picker for categories
 - implement log export
     - export day
     - export grouped (for one day)

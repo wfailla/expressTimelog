@@ -4,14 +4,14 @@ services:
     frontend:
         image: etl-frontend
         ports:
-            - 8080:80
+            - 127.0.0.1:8080:80
         build:
             context: ./frontend
             dockerfile: ./Dockerfile
     backend:
         image: etl-backend
         ports:
-            - 3000:3000
+            - 127.0.0.1:3000:3000
         build:
             context: ./backend
             dockerfile: ./Dockerfile
