@@ -7,10 +7,10 @@ export class TimeString {
 
     constructor(houres: number,
         minutes: number) {
-            this.houres = houres;
-            this.minutes = minutes;
-        }
-    
+        this.houres = houres;
+        this.minutes = minutes;
+    }
+
     public addTime(otherTime: TimeString): void {
         if (this.minutes + otherTime.minutes > 60) {
             this.minutes += otherTime.minutes - 60;
@@ -48,11 +48,11 @@ export class Timestamp {
     }
 
     public static calcWorkTime(list: LogEntity[]): string {
-        var timeString = new TimeString(0,0);
+        var timeString = new TimeString(0, 0);
         var firstTimestamp: Timestamp = new Timestamp(new Date(list[0].timestamp));
         list.forEach(s => {
             var currentTimestamp = new Timestamp(new Date(s.timestamp));
-            if(!s.activity.includes("**")) {
+            if (!s.activity.includes("**")) {
                 timeString.addTime(firstTimestamp.diffTimeString(currentTimestamp))
             }
             firstTimestamp = currentTimestamp;
@@ -61,11 +61,11 @@ export class Timestamp {
     }
 
     public static calculateSlackingTime(list: LogEntity[]): string {
-        var timeString = new TimeString(0,0);
+        var timeString = new TimeString(0, 0);
         var firstTimestamp: Timestamp = new Timestamp(new Date(list[0].timestamp));
         list.forEach(s => {
             var currentTimestamp = new Timestamp(new Date(s.timestamp));
-            if(s.activity.includes("**")) {
+            if (s.activity.includes("**")) {
                 timeString.addTime(firstTimestamp.diffTimeString(currentTimestamp))
             }
             firstTimestamp = currentTimestamp;
@@ -74,15 +74,15 @@ export class Timestamp {
     }
 
     public static calcTimeByGroup(list: LogEntity[], group: string): Map<string, TimeString> {
-        var timeString = new TimeString(0,0);
+        var timeString = new TimeString(0, 0);
         var groups = new Map<string, TimeString>();
         var lastTimestamp: Timestamp = new Timestamp(new Date(list[0].timestamp));
 
 
-        list.forEach( s => {
+        list.forEach(s => {
             var group: string = 'other';
             var currentTimestamp = new Timestamp(new Date(s.timestamp));
-            
+
             if (s.activity.includes(':')) {
                 group = s.activity.split(':')[0];
             }
@@ -91,9 +91,10 @@ export class Timestamp {
                     group,
                     lastTimestamp.diffTimeString(currentTimestamp)
                 );
+            } else {
+                groups.get(group)?.addTime(
+                    lastTimestamp.diffTimeString(currentTimestamp));
             }
-            groups.get(group)?.addTime(
-                lastTimestamp.diffTimeString(currentTimestamp));
 
             lastTimestamp = currentTimestamp;
         })
