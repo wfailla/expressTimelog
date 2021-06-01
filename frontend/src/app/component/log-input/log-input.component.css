@@ -3,24 +3,19 @@
   width: 100%;
 }
 
-.form {
-    width: 78%;
-    padding: 1%;
-  }
-
 .button {
-  margin: auto;
-  width: 8%;
-  padding: 1%;
+  margin: 2px;
+  position: absolute;
+  right: 0;
 }
-
-.currentActivity {
-  margin: auto;
-  width: 8%;
-  padding: 1%;
+.form {
+  width: 100%;
 }
 
 mat-form-field {
-  margin: auto;
-  width: 78%
+  width: 100%;
+}
+
+mat-grid-list {
+  margin: 3px;
 }

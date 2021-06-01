@@ -1,16 +1,20 @@
 <form>
-    <div class="container">
-        <span class="currentActivity">
+    <mat-grid-list cols="8" rowHeight="60px">
+        <mat-grid-tile colspan="1">
             {{ currentDiff }}
-        </span>
-        <span class="form">
-            <mat-form-field>
-                <mat-label>log Time</mat-label>
-                <input type="text" matInput [formControl]="activityFormControl" placeholder="sushi">
-            </mat-form-field>
-        </span>
-        <span class="button">
-            <button mat-raised-button color="primary" (click)="addActivity()">Add</button>
-        </span>
-    </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="6">
+            <div class="form">
+                <mat-form-field>
+                    <mat-label>log Time</mat-label>
+                    <input type="text" matInput [formControl]="activityFormControl" placeholder="sushi">
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1">
+            <div class="button">
+                <button mat-raised-button color="primary" (click)="addActivity()">Add</button>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
 </form>

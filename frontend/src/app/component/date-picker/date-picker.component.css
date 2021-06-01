@@ -1,17 +1,18 @@
-.container {
-    margin: auto;
-    width: 100%;
-  }
-
 .dateDisplay {
-  margin: auto;
-  width: 68%;
-  display: inline-block;
-  padding: 1%;
+  width: max-content;
+  float: center;
 }
 
-.dateDisplayButton {
-  width: 8%;
-  display: inline-block;
-  padding: 1%;
+button {
+  margin: 2px;
+}
+
+.rightButtons {
+  position: absolute;
+  right: 0;
+}
+
+.leftButtons{
+  position: absolute;
+  left: 0;
 }
