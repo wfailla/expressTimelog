@@ -1,0 +1,13 @@
+<div class="container">
+
+    <span class="dateDisplayButton">
+        <button mat-raised-button color="primary" (click)="previousDay()">back</button>
+    </span>
+    <span class="dateDisplay">{{ this.day | date:'yyyy-MM-dd'}}</span>
+    <span class="dateDisplayButton">
+        <button mat-raised-button color="primary" (click)="nextDay()">next</button>
+    </span>
+    <span class="dateDisplayButton">
+        <button mat-raised-button color="primary" (click)="today()">today</button>
+    </span>
+</div>

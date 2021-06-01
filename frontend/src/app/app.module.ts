@@ -20,6 +20,7 @@ import { TimereportComponent } from './component/timereport/timereport.component
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+import { DatePickerComponent } from './component/date-picker/date-picker.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatListModule} from '@angular/material/list';
     LogInputComponent,
     WorkDoneDisplayComponent,
     SlackingTimeDisplayComponent,
-    TimereportComponent
+    TimereportComponent,
+    DatePickerComponent
   ],
   imports: [
     BrowserModule,

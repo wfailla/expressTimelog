@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LogEntity } from '../model/log-entity';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 
 
@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class BackendService {
 
-  public changeOperation = new BehaviorSubject<boolean>(true);
+  public changeOperation = new Subject<boolean>();
 
   constructor(
     private http: HttpClient

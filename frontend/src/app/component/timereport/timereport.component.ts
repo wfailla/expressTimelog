@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { TimereportRow } from 'src/app/model/time-report';
 import { Timestamp, TimeString } from 'src/app/model/timestamp';
 import { BackendService } from 'src/app/service/backend.service';
+import { DateService } from 'src/app/service/date.service';
 
 @Component({
   selector: 'app-timereport',
@@ -22,11 +23,18 @@ export class TimereportComponent implements OnInit {
     private backend: BackendService,
     private changeDetctorRefs: ChangeDetectorRef,
     private datepipe: DatePipe,
+    private dateService: DateService,
   ) { }
 
   ngOnInit(): void {
     this.backend.changeOperation.subscribe(
       s => {
+        this.sync();
+      }
+    );
+    this.dateService.date.subscribe(
+      s => {
+        this.day = s;
         this.sync();
       }
     )
@@ -59,20 +67,6 @@ export class TimereportComponent implements OnInit {
     this.dataSource.data = this.list;
     this.changeDetctorRefs.detectChanges();
 
-  }
-
-  nextDay(): void {
-    this.day = new Date(this.day.setDate(this.day.getDate() + 1));
-    this.sync();
-  }
-  previousDay(): void {
-    this.day = new Date(this.day.setDate(this.day.getDate() - 1));
-    this.sync();
-  }
-
-  today(): void {
-    this.day = new Date();
-    this.sync();
   }
 
 }
