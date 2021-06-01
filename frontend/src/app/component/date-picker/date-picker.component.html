@@ -1,7 +1,7 @@
 <mat-grid-list cols="3" rowHeight="60px">
     <mat-grid-tile colspan="1">
         <div class="leftButtons">
-            <button mat-raised-button color="primary" (click)="previousDay()">back</button>
+            <button mat-raised-button color="primary" (click)="today()">today</button>
         </div>
     </mat-grid-tile>
     <mat-grid-tile colspan="1">
@@ -9,8 +9,8 @@
     </mat-grid-tile>
     <mat-grid-tile colspan="1">
         <div class="rightButtons">
+            <button mat-raised-button color="primary" (click)="previousDay()">back</button>
             <button mat-raised-button color="primary" (click)="nextDay()">next</button>
-            <button mat-raised-button color="primary" (click)="today()">today</button>
         </div>
     </mat-grid-tile>
 </mat-grid-list>
