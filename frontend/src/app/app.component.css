@@ -3,11 +3,12 @@
 }
 
 .example-card {
-    max-width: 100%;
-    margin: 10px;
+    margin: 10px auto;
+    max-width: 1000px;
 }
 
 .container {
     margin: auto;
     width: 100%;
+    
 }
