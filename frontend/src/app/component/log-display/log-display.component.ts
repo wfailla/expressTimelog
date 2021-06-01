@@ -73,4 +73,9 @@ export class LogDisplayComponent implements OnInit {
     this.sync();
   }
 
+  today(): void {
+    this.day = new Date();
+    this.sync();
+  }
+
 }
