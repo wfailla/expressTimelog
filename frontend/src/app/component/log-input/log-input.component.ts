@@ -43,12 +43,18 @@ export class LogInputComponent implements OnInit {
       activity: "asdf"
     };
 
-    var date = new Date();
-    this.timestamp = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm') || '';
-    logEntry.timestamp = this.timestamp || '';
+    var negativeTime: number = 0;
 
     if (this.activityFormControl?.value !== undefined && this.activityFormControl?.value !== "") {
-      logEntry.activity = this.activityFormControl.value;
+      var activity: string = this.activityFormControl.value;
+      if ( activity.includes(";") ) {
+        negativeTime = +activity.split(";")[0];
+        activity = activity.split(";")[1];
+      }
+
+      this.timestamp = this.datepipe.transform(this.subMinutes(new Date(), negativeTime), 'yyyy-MM-dd HH:mm') || '';
+      logEntry.timestamp = this.timestamp || '';
+      logEntry.activity = activity;
     }
 
     this.backend.addLogEntries(logEntry).subscribe(
@@ -64,5 +70,9 @@ export class LogInputComponent implements OnInit {
     this.lastTimestamp = new Timestamp(new Date(this.timestamp));
     this.currentDiff = this.lastTimestamp.diff(currentTimestamp);
   }
+
+  subMinutes(date: Date, minutes: number) {
+    return new Date(date.getTime() + minutes*60000);
+}
 
 }
