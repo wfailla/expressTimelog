@@ -20,10 +20,34 @@ Endpoint to get all logs of a day. Query parameter day (`YYYY-MM-DD`).
 # TODO:
 
 - implement tasks
-- implement today button
 - implement as electron app
+- implement report
 - implement log export
     - export day
     - export grouped (for one day)
     - csv export of all entries
 - implement log import? 
+
+## Report example
+
+```
+Arrived at 07:29
+
+Timetracking and reading up on mattermost and emails            10 min
+TT-387: umsetzung                                               7 hours 16 min
+Meeting: daily                                                  31 min
+
+Total work done: 7 hours 57 min
+
+By category:
+
+Meeting                                                         31 min
+TT-387                                                          7 hours 16 min
+(none)                                                          10 min
+
+Slacking:
+
+Mittag**                                                        27 min
+
+Time spent slacking: 27 min
+```
