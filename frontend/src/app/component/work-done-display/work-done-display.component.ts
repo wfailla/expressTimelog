@@ -21,30 +21,27 @@ export class WorkDoneDisplayComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.backend.getLogEntries(this.datepipe.transform(this.day, 'yyyy-MM-dd') || '').subscribe(
-      s => {
-        this.calcDiff(s);
-      }
-    )
+    this.calcDiff();
 
     this.backend.changeOperation.subscribe(
-      s => {
-        this.backend.getLogEntries(this.datepipe.transform(this.day, 'yyyy-MM-dd') || '').subscribe(
-          o => {
-            this.calcDiff(o);
-          }
-        )
+      () => {
+        this.calcDiff();
       }
     )
     this.dateService.date.subscribe(
       s => {
         this.day = s;
+        this.calcDiff();
       }
     )
   }
 
-  calcDiff(list: LogEntity[]): void {
-    this.workDone = Timestamp.calcWorkTime(list);
+  calcDiff(): void {
+    this.backend.getLogEntries(this.datepipe.transform(this.day, 'yyyy-MM-dd') || '').subscribe(
+      o => {
+        this.workDone = Timestamp.calcWorkTime(o);
+      }
+    )
   }
 
 }
