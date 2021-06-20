@@ -21,11 +21,7 @@ Endpoint to get all logs of a day. Query parameter day (`YYYY-MM-DD`).
 
 - implement tasks
 - implement as electron app
-- implement report
-- implement log export
-    - export day
-    - export grouped (for one day)
-    - csv export of all entries
+- implement report download
 - implement log import? 
 
 ## Report example
