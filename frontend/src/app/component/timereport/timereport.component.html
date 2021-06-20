@@ -14,3 +14,4 @@
         <tr mat-row [ngClass]="{'make-gold': row.activity.includes('**') }" *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>
+<button mat-raised-button color="primary" (click)="generateCSV()">Download CSV</button>

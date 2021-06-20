@@ -69,4 +69,17 @@ export class TimereportComponent implements OnInit {
 
   }
 
+  generateCSV() {
+    let csvData = "timestamp,activity";
+
+    this.list.forEach( s => {
+      csvData += "\n";
+      csvData += s.timestamp + ',';
+      csvData += s.activity;
+    })
+
+    var blob = new Blob([csvData], {type: 'text/csv'});
+    saveAs(blob, this.day + ".csv");
+  }
+
 }
