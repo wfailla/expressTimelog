@@ -18,7 +18,6 @@ export class LogDisplayComponent implements OnInit {
   dataSource = new MatTableDataSource<LogEntityRow>();
   logsDiff: LogEntityRow[] = [];
   day: Date = new Date(Date.now());
-  btnText = "download";
 
   constructor(
     private backend: BackendService,

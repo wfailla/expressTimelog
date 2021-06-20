@@ -19,6 +19,4 @@
             *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>
-<form>
-    <input type="submit" [value]="btnText" (click)="generateCSV()" />
-</form>
+<button mat-raised-button color="primary" (click)="generateCSV()">Download CSV</button>
