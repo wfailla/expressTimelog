@@ -11,13 +11,19 @@ $ cd backend
 $ npm test
 ```
 
-## Docker
-
-## build backend
+### frontend
 
 ```
-$ cd backend
-$ docker build -t etl-backend .
+$ cd frontend
+$ ng test
+```
+
+## Docker Compose
+
+## build
+
+```
+$ docker compose build --no-cache
 ```
 
 ## RUN
