@@ -15,6 +15,10 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row [ngClass]="{'make-gold': row.activity.includes('**') }" *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row [ngClass]="{'make-gold': row.activity.includes('**') }"
+            *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>
+<form>
+    <input type="submit" [value]="btnText" (click)="generateCSV()" />
+</form>

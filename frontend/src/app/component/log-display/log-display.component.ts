@@ -6,6 +6,7 @@ import { LogEntity, LogEntityRow } from 'src/app/model/log-entity';
 import { Timestamp } from 'src/app/model/timestamp';
 import { BackendService } from 'src/app/service/backend.service';
 import { DateService } from 'src/app/service/date.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-log-display',
@@ -17,6 +18,7 @@ export class LogDisplayComponent implements OnInit {
   dataSource = new MatTableDataSource<LogEntityRow>();
   logsDiff: LogEntityRow[] = [];
   day: Date = new Date(Date.now());
+  btnText = "download";
 
   constructor(
     private backend: BackendService,
@@ -70,6 +72,20 @@ export class LogDisplayComponent implements OnInit {
         this.changeDetctorRefs.detectChanges();
       }
     )
+  }
+
+  generateCSV() {
+    let csvData = "abstime,timestamp,activity";
+
+    this.logsDiff.forEach( s => {
+      csvData += "\n";
+      csvData += s.abstime + ',';
+      csvData += s.timestamp + ',';
+      csvData += s.activity;
+    })
+
+    var blob = new Blob([csvData], {type: 'text/csv'});
+    saveAs(blob, this.day + ".csv");
   }
 
 }
