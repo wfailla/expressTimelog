@@ -1,10 +1,10 @@
-FROM node:lts as build-step
+FROM node:14-buster-slim as build-step
 
 RUN mkdir -p /app
 WORKDIR /app
 
-COPY package.json /app
-RUN npm install
+COPY package*.json /app
+RUN npm ci
 
 COPY . /app
 RUN npm run build
